@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class BookService {
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
     public BookService(JdbcTemplate jdbcTemplate) {
