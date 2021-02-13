@@ -13,13 +13,15 @@ public class AuthorService {
 
     private final JdbcTemplate jdbcTemplate;
 
+    private final String getAuthorsSQL = "SELECT author from authors";
+
     @Autowired
     public AuthorService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
     public List<String> getAuthors(){
-        List<String> authors = jdbcTemplate.query("SELECT author from authors", (ResultSet rs, int rowNum) -> rs.getString("author"));
+        List<String> authors = jdbcTemplate.query(getAuthorsSQL, (ResultSet rs, int rowNum) -> rs.getString("author"));
         return new ArrayList<>(authors);
     }
 }

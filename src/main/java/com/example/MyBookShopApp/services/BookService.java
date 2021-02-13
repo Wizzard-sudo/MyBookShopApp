@@ -15,13 +15,15 @@ public class BookService {
 
     private final JdbcTemplate jdbcTemplate;
 
+    private final String getAllBooksSQL = "SELECT * FROM books";
+
     @Autowired
     public BookService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
     public List<Book> getBookData() {
-        List<Book> books = jdbcTemplate.query("SELECT * FROM books", (ResultSet rs, int rowNum)->{
+        List<Book> books = jdbcTemplate.query(getAllBooksSQL, (ResultSet rs, int rowNum)->{
             Book book = new Book();
             book.setId(rs.getInt("id"));
             book.setAuthor(rs.getString("author"));
