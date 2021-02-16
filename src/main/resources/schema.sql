@@ -9,8 +9,8 @@ priceOld  VARCHAR(250) DEFAULT NULL,
 price VARCHAR(250) DEFAULT NULL
 );
 
-CREATE TABLE authors(
-id INT AUTO_INCREMENT PRIMARY KEY,
-author VARCHAR(250) NOT NULL,
-FOREIGN KEY (author) REFERENCES books(author)
+create table authors (
+id INT,
+first_name VARCHAR(50),
+last_name VARCHAR(50)
 );
