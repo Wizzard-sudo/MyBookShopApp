@@ -45,7 +45,7 @@
   <div class="Middle">
     <div class="wrap">
       <main class="Middle-main">
-        <h1 class="Middle-title">Отложенное
+        <h1 class="Middle-title" th:text="#{books.postponed}">Отложенное
         </h1>
         <form class="form Cart Cart_postponed" action="#" method="post">
           <div class="Cart-product">
@@ -97,17 +97,17 @@
                   </div>
                   <div class="Cart-buttons">
                     <div class="Cart-btn">
-                      <button class="btn btn_primary btn_outline" data-sendstatus="CART" data-bookid="[1122]"><span class="btn-icon"><img src="/assets/img/icons/shopping-basket.svg" alt="shopping-basket.svg"/></span><span class="btn-content">Купить</span>
+                      <button class="btn btn_primary btn_outline" data-sendstatus="CART" data-bookid="[1122]"><span class="btn-icon"><img src="/assets/img/icons/shopping-basket.svg" alt="shopping-basket.svg"/></span><span class="btn-content" th:text="#{books.buy}">Купить</span>
                       </button>
                     </div>
                     <div class="Cart-btn">
-                      <button class="btn btn_danger btn_outline" data-sendstatus="UNLINK" data-bookid="[1122]"><span class="btn-icon"><img src="/assets/img/icons/trash.svg" alt="trash.svg"/></span><span class="btn-content">Удалить</span>
+                      <button class="btn btn_danger btn_outline" data-sendstatus="UNLINK" data-bookid="[1122]"><span class="btn-icon"><img src="/assets/img/icons/trash.svg" alt="trash.svg"/></span><span class="btn-content" th:text="#{books.remove}">Удалить</span>
                       </button>
                     </div>
                   </div>
                 </div>
                 <div class="Cart-block Cart-block_price">
-                  <div class="Cart-priceTitle">Цена:
+                  <div class="Cart-priceTitle" th:text="#{books.price}">Цена:
                   </div>
                   <div class="Cart-price">254 р.
                   </div>
@@ -164,17 +164,17 @@
                   </div>
                   <div class="Cart-buttons">
                     <div class="Cart-btn">
-                      <button class="btn btn_primary btn_outline" data-sendstatus="CART" data-bookid="[1133]"><span class="btn-icon"><img src="/assets/img/icons/shopping-basket.svg" alt="shopping-basket.svg"/></span><span class="btn-content">Купить</span>
+                      <button class="btn btn_primary btn_outline" data-sendstatus="CART" data-bookid="[1133]"><span class="btn-icon"><img src="/assets/img/icons/shopping-basket.svg" alt="shopping-basket.svg"/></span><span class="btn-content" th:text="#{books.buy}">Купить</span>
                       </button>
                     </div>
                     <div class="Cart-btn">
-                      <button class="btn btn_danger btn_outline" data-sendstatus="UNLINK" data-bookid="[1133]"><span class="btn-icon"><img src="/assets/img/icons/trash.svg" alt="trash.svg"/></span><span class="btn-content">Удалить</span>
+                      <button class="btn btn_danger btn_outline" data-sendstatus="UNLINK" data-bookid="[1133]"><span class="btn-icon"><img src="/assets/img/icons/trash.svg" alt="trash.svg"/></span><span class="btn-content"  th:text="#{books.remove}">Удалить</span>
                       </button>
                     </div>
                   </div>
                 </div>
                 <div class="Cart-block Cart-block_price">
-                  <div class="Cart-priceTitle">Цена:
+                  <div class="Cart-priceTitle" th:text="#{books.price}">Цена:
                   </div>
                   <div class="Cart-price Cart-price_old">150 р.
                   </div>
@@ -235,17 +235,17 @@
                   </div>
                   <div class="Cart-buttons">
                     <div class="Cart-btn">
-                      <button class="btn btn_primary btn_outline" data-sendstatus="CART" data-bookid="[1111]"><span class="btn-icon"><img src="/assets/img/icons/shopping-basket.svg" alt="shopping-basket.svg"/></span><span class="btn-content">Купить</span>
+                      <button class="btn btn_primary btn_outline" data-sendstatus="CART" data-bookid="[1111]"><span class="btn-icon"><img src="/assets/img/icons/shopping-basket.svg" alt="shopping-basket.svg"/></span><span class="btn-content" th:text="#{books.buy}">Купить</span>
                       </button>
                     </div>
                     <div class="Cart-btn">
-                      <button class="btn btn_danger btn_outline" data-sendstatus="UNLINK" data-bookid="[1111]"><span class="btn-icon"><img src="/assets/img/icons/trash.svg" alt="trash.svg"/></span><span class="btn-content">Удалить</span>
+                      <button class="btn btn_danger btn_outline" data-sendstatus="UNLINK" data-bookid="[1111]"><span class="btn-icon"><img src="/assets/img/icons/trash.svg" alt="trash.svg"/></span><span class="btn-content" th:text="#{books.remove}">Удалить</span>
                       </button>
                     </div>
                   </div>
                 </div>
                 <div class="Cart-block Cart-block_price">
-                  <div class="Cart-priceTitle">Цена:
+                  <div class="Cart-priceTitle" th:text="#{books.price}">Цена:
                   </div>
                   <div class="Cart-price Cart-price_old">254 р.
                   </div>
@@ -261,7 +261,7 @@
             <div class="Cart-block Cart-block_total">
             </div>
             <div class="Cart-block">
-              <button class="btn btn_success btn_md Cart-buyAll" data-sendstatus="CART" data-bookid="[1111, 1122, 1133]">Купить все
+              <button class="btn btn_success btn_md Cart-buyAll" data-sendstatus="CART" data-bookid="[1111, 1122, 1133]" th:text="#{books.buyEverything}">Купить все
               </button>
             </div>
           </div>
