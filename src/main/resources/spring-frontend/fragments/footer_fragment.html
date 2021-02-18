@@ -99,8 +99,8 @@
                         <span th:text="#{bottombar.lang}">Выбор языка</span>
                         <select id="locales">
                             <option value=" "></option>
-                            <option value="en">English</option>
-                            <option value="ru">Русский</option>
+                            <option value="en" th:selected="${#locale == #locale.ENGLISH}">English</option>
+                            <option value="ru" th:selected="${#locale != #locale.ENGLISH}">Русский</option>
                         </select>
                     </li>
                 </ul>

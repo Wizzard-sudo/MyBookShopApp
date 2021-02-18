@@ -31,4 +31,9 @@ public class AuthorsController {
     public String authorsPage(){
         return "authors/index";
     }
+
+    @GetMapping("/detail")
+    public String detailAuthor(){
+        return "authors/slug";
+    }
 }

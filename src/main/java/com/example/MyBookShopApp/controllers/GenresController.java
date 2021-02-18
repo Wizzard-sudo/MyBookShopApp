@@ -12,4 +12,9 @@ public class GenresController {
     public String genresPage(){
         return "genres/index";
     }
+
+    @GetMapping("/slug")
+    public String delailGenres(){
+        return "genres/slug";
+    }
 }
