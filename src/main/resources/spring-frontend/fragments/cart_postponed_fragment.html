@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div class="Cart-buttons" th:fragment="cartButtons (button)">
+    <div class="Cart-btn">
+        <button class="btn btn_primary btn_outline" data-sendstatus="KEPT" data-bookid="[1122]"><span class="btn-icon"><img src="/assets/img/icons/heart.svg" alt="heart.svg"/></span><span class="btn-content" th:text="${button}">Отложить</span>
+        </button>
+    </div>
+    <div class="Cart-btn">
+        <button class="btn btn_danger btn_outline" data-sendstatus="UNLINK" data-bookid="[1122]"><span class="btn-icon"><img src="/assets/img/icons/trash.svg" alt="trash.svg"/></span><span class="btn-content" th:text="#{books.remove}">Удалить</span>
+        </button>
+    </div>
+</div>
+
+<div class="Cart-rating" th:fragment="cartRating (rating)">
+    <span class="Rating"><span class="Rating-stars"><span th:class="${0 < rating} ? 'Rating-star Rating-star_view':'Rating-star'">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18">
+                            <g>
+                              <g>
+                                <path fill="#ffc000" d="M9.5 14.925L3.629 18l1.121-6.512L0 6.875l6.564-.95L9.5 0l2.936 5.925 6.564.95-4.75 4.613L15.371 18z"></path>
+                              </g>
+                            </g>
+                          </svg></span><span th:class="${1 < rating} ? 'Rating-star Rating-star_view':'Rating-star'">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18">
+                            <g>
+                              <g>
+                                <path fill="#ffc000" d="M9.5 14.925L3.629 18l1.121-6.512L0 6.875l6.564-.95L9.5 0l2.936 5.925 6.564.95-4.75 4.613L15.371 18z"></path>
+                              </g>
+                            </g>
+                          </svg></span><span th:class="${2 < rating} ? 'Rating-star Rating-star_view':'Rating-star'">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18">
+                            <g>
+                              <g>
+                                <path fill="#ffc000" d="M9.5 14.925L3.629 18l1.121-6.512L0 6.875l6.564-.95L9.5 0l2.936 5.925 6.564.95-4.75 4.613L15.371 18z"></path>
+                              </g>
+                            </g>
+                          </svg></span><span th:class="${3 < rating} ? 'Rating-star Rating-star_view':'Rating-star'">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18">
+                            <g>
+                              <g>
+                                <path fill="#ffc000" d="M9.5 14.925L3.629 18l1.121-6.512L0 6.875l6.564-.95L9.5 0l2.936 5.925 6.564.95-4.75 4.613L15.371 18z"></path>
+                              </g>
+                            </g>
+                          </svg></span><span th:class="${4 < rating} ? 'Rating-star Rating-star_view':'Rating-star'">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18">
+                            <g>
+                              <g>
+                                <path fill="#ffc000" d="M9.5 14.925L3.629 18l1.121-6.512L0 6.875l6.564-.95L9.5 0l2.936 5.925 6.564.95-4.75 4.613L15.371 18z"></path>
+                              </g>
+                            </g>
+                          </svg></span></span></span>
+    </div>
+    <div th:replace="~{fragments/cart_postponed_fragment :: cartButtons (#{books.buy})}"></div>
+</div>
+<div class="Cart-block Cart-block_price">
+    <div class="Cart-priceTitle" th:text="#{books.price}">Цена:
+    </div>
+    <div class="Cart-price Cart-price_old">254 р.
+    </div>
+    <div class="Cart-price">180 р.
+    </div>
+    <div class="Cart-sale">-30%
+    </div>
+</div>
+</div>
+</div>
+
+</body>
+</html>
