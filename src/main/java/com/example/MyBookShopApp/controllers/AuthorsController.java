@@ -25,19 +25,19 @@ public class AuthorsController {
 
     //maps with a list of authors sorted alphabetically
     @ModelAttribute("authorsMap")
-    public Map<String, List<Author>> authorsMap(){
+    public Map<String, List<Author>> authorsMap() {
         return authorService.getAuthorsMap();
     }
 
     //authors page, only return authors page
     @GetMapping("/")
-    public String authorsPage(){
+    public String authorsPage() {
         return "authors/index";
     }
 
     //detail about one author
     @GetMapping("/detail")
-    public String detailAuthor(){
+    public String detailAuthor() {
         return "authors/slug";
     }
 }

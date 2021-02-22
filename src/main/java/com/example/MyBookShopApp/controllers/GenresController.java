@@ -12,13 +12,13 @@ public class GenresController {
 
     //return main genres page
     @GetMapping("/")
-    public String genresPage(){
+    public String genresPage() {
         return "genres/index";
     }
 
     //return detail genres page
     @GetMapping("/slug")
-    public String delailGenres(){
+    public String delailGenres() {
         return "genres/slug";
     }
 }

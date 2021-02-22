@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Repository
-public class AuthorRepositoryImpl implements AuthorRepository{
+public class AuthorRepositoryImpl implements AuthorRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -25,14 +25,14 @@ public class AuthorRepositoryImpl implements AuthorRepository{
 
     @Override
     public Map<String, List<Author>> getAuthorsMap() {
-        List<Author> authors = jdbcTemplate.query(getAuthorsSQL, (ResultSet rs, int rowNum)->{
+        List<Author> authors = jdbcTemplate.query(getAuthorsSQL, (ResultSet rs, int rowNum) -> {
             Author author = new Author();
             author.setId(rs.getInt("id"));
             author.setFirstName(rs.getString("first_Name"));
             author.setLastName(rs.getString("last_Name"));
             return author;
         });
-        return authors.stream().collect(Collectors.groupingBy((Author a) -> {return a.getLastName().substring(0, 1);}));
+        return authors.stream().collect(Collectors.groupingBy((Author a) -> a.getLastName().substring(0, 1)));
     }
 
 }

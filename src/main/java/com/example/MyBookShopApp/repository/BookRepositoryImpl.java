@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class BookRepositoryImpl implements BookRepository{
+public class BookRepositoryImpl implements BookRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -24,7 +24,7 @@ public class BookRepositoryImpl implements BookRepository{
 
     @Override
     public List<Book> getBookData() {
-        List<Book> books = jdbcTemplate.query(getAllBooksSQL, (ResultSet rs, int rowNum)->{
+        List<Book> books = jdbcTemplate.query(getAllBooksSQL, (ResultSet rs, int rowNum) -> {
             Book book = new Book();
             book.setId(rs.getInt("id"));
             book.setAuthor(rs.getString("author"));

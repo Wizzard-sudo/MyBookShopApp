@@ -9,13 +9,13 @@ public class CartController {
 
     //return page with postponed books
     @GetMapping("/postponed")
-    public String postponedPage(){
+    public String postponedPage() {
         return "postponed";
     }
 
     //return page with cart users
     @GetMapping("/cart")
-    public String cartPage(){
+    public String cartPage() {
         return "cart";
     }
 }

@@ -22,13 +22,13 @@ public class MainPageController {
 
     //return Model with recommended Books
     @ModelAttribute("recommendedBooks")
-    public List<Book> recommendedBooks(){
+    public List<Book> recommendedBooks() {
         return bookService.getBookData();
     }
 
     //return main page
     @GetMapping("/")
-    public String mainPage(){
+    public String mainPage() {
         return "index";
     }
 }

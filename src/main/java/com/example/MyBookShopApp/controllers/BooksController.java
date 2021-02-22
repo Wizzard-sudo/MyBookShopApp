@@ -11,13 +11,13 @@ public class BooksController {
 
     //return page with news books
     @GetMapping("/recent")
-    public String recentPage(){
+    public String recentPage() {
         return "books/recent";
     }
 
     //return page with popular books
     @GetMapping("/popular")
-    public String popularPage(){
+    public String popularPage() {
         return "books/popular";
     }
 }
