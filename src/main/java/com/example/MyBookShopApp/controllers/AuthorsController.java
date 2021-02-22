@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 import java.util.Map;
 
+//the controller responsible for working with authors
 @Controller
 @RequestMapping("/authors")
 public class AuthorsController {
@@ -22,16 +23,19 @@ public class AuthorsController {
         this.authorService = authorService;
     }
 
+    //maps with a list of authors sorted alphabetically
     @ModelAttribute("authorsMap")
     public Map<String, List<Author>> authorsMap(){
         return authorService.getAuthorsMap();
     }
 
+    //authors page, only return authors page
     @GetMapping("/")
     public String authorsPage(){
         return "authors/index";
     }
 
+    //detail about one author
     @GetMapping("/detail")
     public String detailAuthor(){
         return "authors/slug";
