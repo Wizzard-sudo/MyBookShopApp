@@ -1,9 +1,18 @@
 package com.example.MyBookShopApp.dto;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "books")
 public class Book {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Transient
     private String author;
+
     private String title;
     private String priceOld;
     private String price;
@@ -46,16 +55,5 @@ public class Book {
 
     public void setPrice(String price) {
         this.price = price;
-    }
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", author='" + author + '\'' +
-                ", title='" + title + '\'' +
-                ", priceOld='" + priceOld + '\'' +
-                ", price='" + price + '\'' +
-                '}';
     }
 }
