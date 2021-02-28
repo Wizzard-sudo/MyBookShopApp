@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 //the service responsible for the work and processing of authors
 @Service
@@ -21,6 +22,6 @@ public class AuthorService {
 
     //returns all authors from the database, in the form "*letter*, *array of authors*"
     public Map<String, List<Author>> getAuthorsMap() {
-        return authorRepository.getAuthorsMap();
+        return authorRepository.findAll().stream().collect(Collectors.groupingBy((Author a) -> a.getLastName().substring(0, 1)));
     }
 }

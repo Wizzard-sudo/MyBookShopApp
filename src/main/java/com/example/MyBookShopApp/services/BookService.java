@@ -11,15 +11,15 @@ import java.util.List;
 @Service
 public class BookService {
 
-    private final BookRepository bookRepo;
+    private final BookRepository bookRepository;
 
     @Autowired
-    public BookService(BookRepository bookRepo) {
-        this.bookRepo = bookRepo;
+    public BookService(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
     }
 
     //returns all books from the database
     public List<Book> getBookData() {
-        return bookRepo.getBookData();
+        return bookRepository.findAll();
     }
 }

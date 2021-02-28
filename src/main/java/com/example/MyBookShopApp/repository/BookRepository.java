@@ -1,12 +1,17 @@
 package com.example.MyBookShopApp.repository;
 
 import com.example.MyBookShopApp.dto.Book;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-//the interface that is responsible for all the operations with the authors
-public interface BookRepository {
+@Repository
+public interface BookRepository extends JpaRepository<Book, Integer> {
 
-    //returns all books from the database in array
-    public List<Book> getBookData();
+    List<Book> findBooksByAuthor_FirstName(String name);
+
+    @Query("from Book")
+    List<Book> customFindAllBooks();
 }
