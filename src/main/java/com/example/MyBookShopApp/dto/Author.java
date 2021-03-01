@@ -1,5 +1,7 @@
 package com.example.MyBookShopApp.dto;
 
+import javax.validation.constraints.NotNull;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,19 +13,16 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String firstName;
-    private String lastName;
+    private String photo;
+    @NotNull
+    private String slug;
+    @NotNull
+    private String name;
+    @Column(columnDefinition = "text")
+    private String description;
 
     @OneToMany(mappedBy = "author")
-    private List<Book> bookList = new ArrayList<>();
-
-    public List<Book> getBookList() {
-        return bookList;
-    }
-
-    public void setBookList(List<Book> bookList) {
-        this.bookList = bookList;
-    }
+    private List<Book2Author> book2Authors = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -33,26 +32,58 @@ public class Author {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getSlug() {
+        return slug;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setSlug(String slug) {
+        this.slug = slug;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
     public String toString() {
-        return firstName + ' ' + lastName;
+        return "Author{" +
+                "id=" + id +
+                ", photo='" + photo + '\'' +
+                ", slug='" + slug + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 
+    //    @OneToMany(mappedBy = "author")
+//    private List<Book> bookList = new ArrayList<>();
+
+//    public List<Book> getBookList() {
+//        return bookList;
+//    }
+//
+//    public void setBookList(List<Book> bookList) {
+//        this.bookList = bookList;
+//    }
 
 }

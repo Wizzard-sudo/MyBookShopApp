@@ -21,7 +21,12 @@ public class AuthorService {
     }
 
     //returns all authors from the database, in the form "*letter*, *array of authors*"
-    public Map<String, List<Author>> getAuthorsMap() {
-        return authorRepository.findAll().stream().collect(Collectors.groupingBy((Author a) -> a.getLastName().substring(0, 1)));
+//    public Map<String, List<Author>> getAuthorsMap() {
+//        //return authorRepository.findAll().stream().collect(Collectors.groupingBy((Author a) -> a.getLastName().substring(0, 1)));
+//        return null;
+//    }
+
+    public Author getAuthorById(Integer id){
+        return authorRepository.findById(id).get();
     }
 }

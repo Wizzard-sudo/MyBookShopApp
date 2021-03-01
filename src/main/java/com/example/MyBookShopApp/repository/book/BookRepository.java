@@ -1,6 +1,6 @@
-package com.example.MyBookShopApp.repository;
+package com.example.MyBookShopApp.repository.book;
 
-import com.example.MyBookShopApp.dto.Book;
+import com.example.MyBookShopApp.dto.book.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -9,8 +9,6 @@ import java.util.List;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Integer> {
-
-    List<Book> findBooksByAuthor_FirstName(String name);
 
     @Query("from Book")
     List<Book> customFindAllBooks();
