@@ -1,6 +1,6 @@
-package com.example.MyBookShopApp.repository;
+package com.example.MyBookShopApp.repository.user;
 
-import com.example.MyBookShopApp.dto.User;
+import com.example.MyBookShopApp.dto.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

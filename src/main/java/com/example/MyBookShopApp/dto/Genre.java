@@ -1,7 +1,11 @@
 package com.example.MyBookShopApp.dto;
 
+import com.example.MyBookShopApp.dto.relationship.Book2Genre;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "genres")
@@ -14,6 +18,11 @@ public class Genre {
     private String slug;
     @NotNull
     private String name;
+
+    @OneToMany(mappedBy = "genre")
+    private List<Book2Genre> book2Genres = new ArrayList<>();
+
+
 
     public Integer getId() {
         return id;

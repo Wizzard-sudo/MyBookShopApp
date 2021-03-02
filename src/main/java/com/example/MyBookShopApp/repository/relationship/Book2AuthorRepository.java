@@ -1,6 +1,6 @@
-package com.example.MyBookShopApp.repository;
+package com.example.MyBookShopApp.repository.relationship;
 
-import com.example.MyBookShopApp.dto.Book2Author;
+import com.example.MyBookShopApp.dto.relationship.Book2Author;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

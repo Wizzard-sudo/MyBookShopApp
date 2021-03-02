@@ -1,6 +1,6 @@
 package com.example.MyBookShopApp.dto.book;
 
-import com.example.MyBookShopApp.dto.User;
+import com.example.MyBookShopApp.dto.user.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

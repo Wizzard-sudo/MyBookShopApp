@@ -1,5 +1,7 @@
 package com.example.MyBookShopApp.dto;
 
+import com.example.MyBookShopApp.dto.relationship.Book2Author;
+
 import javax.validation.constraints.NotNull;
 
 import javax.persistence.*;

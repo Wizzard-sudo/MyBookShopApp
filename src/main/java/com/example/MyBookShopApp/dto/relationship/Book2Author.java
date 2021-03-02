@@ -1,5 +1,6 @@
-package com.example.MyBookShopApp.dto;
+package com.example.MyBookShopApp.dto.relationship;
 
+import com.example.MyBookShopApp.dto.Author;
 import com.example.MyBookShopApp.dto.book.Book;
 
 import javax.validation.constraints.NotNull;

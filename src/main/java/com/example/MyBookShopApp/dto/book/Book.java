@@ -1,6 +1,8 @@
 package com.example.MyBookShopApp.dto.book;
 
-import com.example.MyBookShopApp.dto.Book2Author;
+import com.example.MyBookShopApp.dto.relationship.Book2Author;
+import com.example.MyBookShopApp.dto.relationship.Book2Genre;
+import com.example.MyBookShopApp.dto.relationship.Book2User;
 
 import javax.validation.constraints.NotNull;
 
@@ -39,6 +41,12 @@ public class Book {
 
     @OneToMany(mappedBy = "book")
     private List<BookReview> bookReviews = new ArrayList<>();
+
+    @OneToMany(mappedBy = "book")
+    private List<Book2Genre> book2Genres = new ArrayList<>();
+
+    @OneToMany(mappedBy = "book")
+    private List<Book2User> book2Users = new ArrayList<>();
 
 
 //    @ManyToOne

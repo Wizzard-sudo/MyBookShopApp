@@ -1,7 +1,9 @@
 package com.example.MyBookShopApp.controllers;
 
-import com.example.MyBookShopApp.dto.Genre;
-import com.example.MyBookShopApp.services.GenreService;
+import com.example.MyBookShopApp.dto.relationship.Book2User;
+import com.example.MyBookShopApp.dto.user.UserContact;
+import com.example.MyBookShopApp.services.relationship.Book2UserService;
+import com.example.MyBookShopApp.services.user.UserContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +14,10 @@ import java.util.logging.Logger;
 @Controller
 public class MainPageController {
 
-    private GenreService service;
+    private UserContactService service;
 
     @Autowired
-    public MainPageController(GenreService service) {
+    public MainPageController(UserContactService service) {
         this.service = service;
     }
 
@@ -34,8 +36,8 @@ public class MainPageController {
     //return main page
     @GetMapping("/")
     public String mainPage() {
-        Genre genre = service.getGenreById(1);
-        Logger.getAnonymousLogger().info(genre.toString());
+        UserContact userContact = service.getUserContactById(1);
+        Logger.getAnonymousLogger().info(userContact.toString());
         return "index";
     }
 }

@@ -1,7 +1,8 @@
-package com.example.MyBookShopApp.dto;
+package com.example.MyBookShopApp.dto.user;
 
 import com.example.MyBookShopApp.dto.book.BookReview;
 import com.example.MyBookShopApp.dto.book.BookReviewLike;
+import com.example.MyBookShopApp.dto.relationship.Book2User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -25,11 +26,17 @@ public class User {
     private Integer balance;
     private String name;
 
+    @OneToOne(mappedBy = "user")
+    private UserContact userContact;
+
     @OneToMany(mappedBy = "user")
     private List<BookReview> bookReviews = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
     private List<BookReviewLike> bookReviewLikes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Book2User> book2Users = new ArrayList<>();
 
     public Integer getId() {
         return id;
