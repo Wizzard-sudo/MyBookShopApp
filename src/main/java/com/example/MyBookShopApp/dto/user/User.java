@@ -1,7 +1,10 @@
 package com.example.MyBookShopApp.dto.user;
 
+import com.example.MyBookShopApp.dto.BalanceTransaction;
+import com.example.MyBookShopApp.dto.FileDownload;
 import com.example.MyBookShopApp.dto.book.BookReview;
 import com.example.MyBookShopApp.dto.book.BookReviewLike;
+import com.example.MyBookShopApp.dto.communication.Message;
 import com.example.MyBookShopApp.dto.relationship.Book2User;
 
 import javax.persistence.*;
@@ -37,6 +40,15 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Book2User> book2Users = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<BalanceTransaction> balanceTransactions = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<FileDownload> fileDownloads = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Message> messages = new ArrayList<>();
 
     public Integer getId() {
         return id;

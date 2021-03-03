@@ -1,5 +1,7 @@
 package com.example.MyBookShopApp.dto.book;
 
+import com.example.MyBookShopApp.dto.BalanceTransaction;
+import com.example.MyBookShopApp.dto.FileDownload;
 import com.example.MyBookShopApp.dto.relationship.Book2Author;
 import com.example.MyBookShopApp.dto.relationship.Book2Genre;
 import com.example.MyBookShopApp.dto.relationship.Book2User;
@@ -48,11 +50,11 @@ public class Book {
     @OneToMany(mappedBy = "book")
     private List<Book2User> book2Users = new ArrayList<>();
 
+    @OneToMany(mappedBy = "book")
+    private List<BalanceTransaction> balanceTransactions = new ArrayList<>();
 
-//    @ManyToOne
-//    @JoinColumn(name = "author_id", referencedColumnName = "id")
-//    private Author author;
-
+    @OneToMany(mappedBy = "book")
+    private List<FileDownload> fileDownloads = new ArrayList<>();
 
     public Integer getId() {
         return id;
