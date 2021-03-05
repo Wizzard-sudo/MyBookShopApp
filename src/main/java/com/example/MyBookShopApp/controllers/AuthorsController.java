@@ -16,18 +16,17 @@ import java.util.Map;
 @RequestMapping("/authors")
 public class AuthorsController {
 
-//    private final AuthorService authorService;
+    private final AuthorService authorService;
 
-//    @Autowired
-//    public AuthorsController(AuthorService authorService) {
-//        this.authorService = authorService;
-//    }
+    @Autowired
+    public AuthorsController(AuthorService authorService) {
+        this.authorService = authorService;
+    }
 
-    //maps with a list of authors sorted alphabetically
-//    @ModelAttribute("authorsMap")
-//    public Map<String, List<Author>> authorsMap() {
-//        return authorService.getAuthorsMap();
-//    }
+    @ModelAttribute("authorsMap")
+    public Map<String, List<Author>> authorsMap() {
+        return authorService.getAuthorsMap();
+    }
 
     //authors page, only return authors page
     @GetMapping("/")
