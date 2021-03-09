@@ -1,30 +1,28 @@
 package com.example.MyBookShopApp.dto;
 
-import com.example.MyBookShopApp.dto.relationship.Book2Author;
-
-import javax.validation.constraints.NotNull;
+import com.example.MyBookShopApp.dto.relationship.Book2Genre;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "authors")
-public class Author {
-
+@Table(name = "genres")
+public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String photo;
+    private Integer parent_id;
     @NotNull
     private String slug;
     @NotNull
     private String name;
-    @Column(columnDefinition = "text")
-    private String description;
 
-    @OneToMany(mappedBy = "author")
-    private List<Book2Author> book2Authors = new ArrayList<>();
+    @OneToMany(mappedBy = "genre")
+    private List<Book2Genre> book2Genres = new ArrayList<>();
+
+
 
     public Integer getId() {
         return id;
@@ -34,12 +32,12 @@ public class Author {
         this.id = id;
     }
 
-    public String getPhoto() {
-        return photo;
+    public Integer getParent_id() {
+        return parent_id;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public void setParent_id(Integer parent_id) {
+        this.parent_id = parent_id;
     }
 
     public String getSlug() {
@@ -58,22 +56,13 @@ public class Author {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     @Override
     public String toString() {
-        return "Author{" +
+        return "Genre{" +
                 "id=" + id +
-                ", photo='" + photo + '\'' +
+                ", parent_id=" + parent_id +
                 ", slug='" + slug + '\'' +
                 ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
                 '}';
     }
 }

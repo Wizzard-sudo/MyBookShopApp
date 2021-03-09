@@ -23,7 +23,6 @@ public class AuthorsController {
         this.authorService = authorService;
     }
 
-    //maps with a list of authors sorted alphabetically
     @ModelAttribute("authorsMap")
     public Map<String, List<Author>> authorsMap() {
         return authorService.getAuthorsMap();

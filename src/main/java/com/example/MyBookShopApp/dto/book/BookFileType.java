@@ -1,30 +1,23 @@
-package com.example.MyBookShopApp.dto;
-
-import com.example.MyBookShopApp.dto.relationship.Book2Author;
-
-import javax.validation.constraints.NotNull;
+package com.example.MyBookShopApp.dto.book;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "authors")
-public class Author {
-
+@Table(name = "book_file_type")
+public class BookFileType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String photo;
-    @NotNull
-    private String slug;
     @NotNull
     private String name;
     @Column(columnDefinition = "text")
     private String description;
 
-    @OneToMany(mappedBy = "author")
-    private List<Book2Author> book2Authors = new ArrayList<>();
+    @OneToMany(mappedBy = "bookFileType")
+    private List<BookFile>bookFiles = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -32,22 +25,6 @@ public class Author {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-
-    public String getSlug() {
-        return slug;
-    }
-
-    public void setSlug(String slug) {
-        this.slug = slug;
     }
 
     public String getName() {
@@ -68,10 +45,8 @@ public class Author {
 
     @Override
     public String toString() {
-        return "Author{" +
+        return "BookFileType{" +
                 "id=" + id +
-                ", photo='" + photo + '\'' +
-                ", slug='" + slug + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';

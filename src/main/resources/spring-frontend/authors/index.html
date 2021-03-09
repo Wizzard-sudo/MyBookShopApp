@@ -60,8 +60,7 @@
                         </h2>
                         <div class="Authors-letter">
                             <div th:each="author : ${authorList.value}" class="Authors-item"><a
-                                    th:href="@{/authors/detail}" th:text="${author.lastName + ' ' + author.firstName}">Абгарян
-                                Наринэ</a>
+                                    th:href="@{/authors/detail}" th:text="${author.name}"></a>
                             </div>
                         </div>
                     </div>
