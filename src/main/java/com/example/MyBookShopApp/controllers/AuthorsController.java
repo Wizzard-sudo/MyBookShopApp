@@ -2,18 +2,21 @@ package com.example.MyBookShopApp.controllers;
 
 import com.example.MyBookShopApp.dto.Author;
 import com.example.MyBookShopApp.services.AuthorService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 import java.util.Map;
 
-//the controller responsible for working with authors
 @Controller
 @RequestMapping("/authors")
+@Api(description = "authors data")
 public class AuthorsController {
 
     private final AuthorService authorService;
@@ -38,5 +41,12 @@ public class AuthorsController {
     @GetMapping("/detail")
     public String detailAuthor() {
         return "authors/slug";
+    }
+
+    @ApiOperation("method to get map of authors")
+    @GetMapping("/api/authors")
+    @ResponseBody
+    public Map<String, List<Author>> authorsData(){
+        return authorService.getAuthorsMap();
     }
 }
