@@ -25,4 +25,29 @@ public class BookService {
 
     public Book getBookById(Integer id){ return bookRepository.findById(id).get();}
 
+    //NEW BOOK REST SERVICE METHOD
+
+//    public List<Book> getBooksByAuthors(String authorName){
+//        return bookRepository.findBooksByAuthorNameContaining(authorName);
+//    }
+
+    public List<Book> getBooksByTitle(String bookTitle){
+        return bookRepository.findBooksByTitleContaining(bookTitle);
+    }
+
+    public List<Book> getBooksWithPriceBetween(Integer min, Integer max){
+        return bookRepository.findBooksByPriceBetween(min, max);
+    }
+
+    public List<Book> getBooksWithPrice(Integer price){
+        return bookRepository.findBooksByPriceIs(price);
+    }
+
+    public List<Book> getBookWithMaxDiscount(){
+        return bookRepository.getBooksByMaxDiscount();
+    }
+
+    public List<Book> getBestsellers(){
+        return bookRepository.getBestsellers();
+    }
 }

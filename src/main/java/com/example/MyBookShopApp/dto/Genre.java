@@ -13,7 +13,8 @@ public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer parent_id;
+    @Column(name = "parent_id")
+    private Integer parentId;
     @NotNull
     private String slug;
     @NotNull
@@ -33,11 +34,11 @@ public class Genre {
     }
 
     public Integer getParent_id() {
-        return parent_id;
+        return parentId;
     }
 
-    public void setParent_id(Integer parent_id) {
-        this.parent_id = parent_id;
+    public void setParent_id(Integer parentId) {
+        this.parentId = parentId;
     }
 
     public String getSlug() {
@@ -60,7 +61,7 @@ public class Genre {
     public String toString() {
         return "Genre{" +
                 "id=" + id +
-                ", parent_id=" + parent_id +
+                ", parent_id=" + parentId +
                 ", slug='" + slug + '\'' +
                 ", name='" + name + '\'' +
                 '}';

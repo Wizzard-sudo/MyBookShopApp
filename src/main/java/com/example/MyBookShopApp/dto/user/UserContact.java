@@ -20,9 +20,10 @@ public class UserContact {
     @NotNull
     private short approved;
     private String code;
-    private Integer code_trials;
-    @Column(columnDefinition = "timestamp")
-    private Date code_time;
+    @Column(name = "code_trials")
+    private Integer codeTrials;
+    @Column(name = "code_time", columnDefinition = "timestamp")
+    private Date codeTime;
     @NotNull
     private String contact;
 
@@ -67,19 +68,19 @@ public class UserContact {
     }
 
     public Integer getCode_trials() {
-        return code_trials;
+        return codeTrials;
     }
 
-    public void setCode_trials(Integer code_trials) {
-        this.code_trials = code_trials;
+    public void setCode_trials(Integer codeTrials) {
+        this.codeTrials = codeTrials;
     }
 
     public Date getCode_time() {
-        return code_time;
+        return codeTime;
     }
 
-    public void setCode_time(Date code_time) {
-        this.code_time = code_time;
+    public void setCode_time(Date codeTime) {
+        this.codeTime = codeTime;
     }
 
     public String getContact() {
@@ -98,8 +99,8 @@ public class UserContact {
                 ", type=" + type +
                 ", approved=" + approved +
                 ", code='" + code + '\'' +
-                ", code_trials=" + code_trials +
-                ", code_time=" + code_time +
+                ", code_trials=" + codeTrials +
+                ", code_time=" + codeTime +
                 ", contact='" + contact + '\'' +
                 '}';
     }

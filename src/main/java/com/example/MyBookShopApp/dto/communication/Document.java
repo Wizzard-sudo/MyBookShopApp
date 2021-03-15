@@ -10,8 +10,8 @@ public class Document {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @NotNull
-    @Column(columnDefinition = "integer default 0")
-    private Integer sort_index;
+    @Column(name = "sort_index", columnDefinition = "integer default 0")
+    private Integer sortIndex;
     @NotNull
     private String slug;
     @NotNull
@@ -29,11 +29,11 @@ public class Document {
     }
 
     public Integer getSort_index() {
-        return sort_index;
+        return sortIndex;
     }
 
-    public void setSort_index(Integer sort_index) {
-        this.sort_index = sort_index;
+    public void setSort_index(Integer sortIndex) {
+        this.sortIndex = sortIndex;
     }
 
     public String getSlug() {
@@ -64,7 +64,7 @@ public class Document {
     public String toString() {
         return "Document{" +
                 "id=" + id +
-                ", sort_index=" + sort_index +
+                ", sort_index=" + sortIndex +
                 ", slug='" + slug + '\'' +
                 ", title='" + title + '\'' +
                 ", text='" + text + '\'' +

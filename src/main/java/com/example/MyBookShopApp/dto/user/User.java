@@ -22,8 +22,8 @@ public class User {
     @NotNull
     private String hash;
     @NotNull
-    @Column(columnDefinition = "timestamp")
-    private Date reg_time;
+    @Column(name = "reg_time", columnDefinition = "timestamp")
+    private Date regTime;
     @NotNull
     @Column(columnDefinition = "integer default 0")
     private Integer balance;
@@ -67,11 +67,11 @@ public class User {
     }
 
     public Date getReg_time() {
-        return reg_time;
+        return regTime;
     }
 
-    public void setReg_time(Date reg_time) {
-        this.reg_time = reg_time;
+    public void setReg_time(Date regTime) {
+        this.regTime = regTime;
     }
 
     public Integer getBalance() {
@@ -95,7 +95,7 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", hash='" + hash + '\'' +
-                ", reg_time=" + reg_time +
+                ", reg_time=" + regTime +
                 ", balance=" + balance +
                 ", name='" + name + '\'' +
                 '}';

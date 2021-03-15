@@ -18,7 +18,8 @@ public class Message {
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
-    private String e_mail;
+    @Column(name = "e_mail")
+    private String eMail;
     private String name;
     @NotNull
     private String subject;
@@ -51,11 +52,11 @@ public class Message {
     }
 
     public String getE_mail() {
-        return e_mail;
+        return eMail;
     }
 
-    public void setE_mail(String e_mail) {
-        this.e_mail = e_mail;
+    public void setE_mail(String eMail) {
+        this.eMail = eMail;
     }
 
     public String getName() {
@@ -88,7 +89,7 @@ public class Message {
                 "id=" + id +
                 ", time=" + time +
                 ", user=" + user +
-                ", e_mail='" + e_mail + '\'' +
+                ", e_mail='" + eMail + '\'' +
                 ", name='" + name + '\'' +
                 ", subject='" + subject + '\'' +
                 ", text='" + text + '\'' +

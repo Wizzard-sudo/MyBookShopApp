@@ -23,8 +23,8 @@ public class Book2Author {
     @JoinColumn(name = "author_id")
     private Author author;
     @NotNull
-    @Column(columnDefinition = "integer default 0")
-    private Integer sort_index;
+    @Column(name = "sort_index", columnDefinition = "integer default 0")
+    private Integer sortIndex;
 
     public Integer getId() {
         return id;
@@ -51,11 +51,11 @@ public class Book2Author {
     }
 
     public Integer getSort_index() {
-        return sort_index;
+        return sortIndex;
     }
 
-    public void setSort_index(Integer sort_index) {
-        this.sort_index = sort_index;
+    public void setSort_index(Integer sortIndex) {
+        this.sortIndex = sortIndex;
     }
 
     @Override
@@ -64,7 +64,7 @@ public class Book2Author {
                 "id=" + id +
                 ", book=" + book +
                 ", author=" + author +
-                ", sort_index=" + sort_index +
+                ", sort_index=" + sortIndex +
                 '}';
     }
 }
