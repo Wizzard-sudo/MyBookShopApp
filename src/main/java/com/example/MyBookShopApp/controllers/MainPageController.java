@@ -3,6 +3,7 @@ package com.example.MyBookShopApp.controllers;
 import com.example.MyBookShopApp.dto.Author;
 import com.example.MyBookShopApp.dto.BalanceTransaction;
 import com.example.MyBookShopApp.dto.book.Book;
+import com.example.MyBookShopApp.dto.book.RecommendedBooksPageDto;
 import com.example.MyBookShopApp.services.BalanceTransactionService;
 import com.example.MyBookShopApp.services.book.BookService;
 import com.example.MyBookShopApp.services.relationship.Book2AuthorService;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
 import java.util.List;
@@ -34,8 +37,7 @@ public class MainPageController {
     @ModelAttribute("recommendedBooks")
     public Map<Author, Book> recommendedBooks() {
         Map<Author, Book> books = new HashMap<>();
-        for (Book book: bookService.getBookData()
-             ) {
+        for (Book book: bookService.getPageOfRecommendedBooks(0, 6).getContent()) {
             books.put(book2AuthorService.getBook2Author(book.getId()).getAuthor(), book);
         }
         return books;
@@ -45,5 +47,11 @@ public class MainPageController {
     @GetMapping("/")
     public String mainPage() {
         return "index";
+    }
+
+    @GetMapping("/books/recommended")
+    @ResponseBody
+    public RecommendedBooksPageDto getBookPage(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit){
+        return new RecommendedBooksPageDto(bookService.getPageOfRecommendedBooks(offset, limit).getContent());
     }
 }

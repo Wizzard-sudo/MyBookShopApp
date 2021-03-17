@@ -67,19 +67,19 @@ public class UserContact {
         this.code = code;
     }
 
-    public Integer getCode_trials() {
+    public Integer getCodeTrials() {
         return codeTrials;
     }
 
-    public void setCode_trials(Integer codeTrials) {
+    public void setCodeTrials(Integer codeTrials) {
         this.codeTrials = codeTrials;
     }
 
-    public Date getCode_time() {
+    public Date getCodeTime() {
         return codeTime;
     }
 
-    public void setCode_time(Date codeTime) {
+    public void setCodeTime(Date codeTime) {
         this.codeTime = codeTime;
     }
 

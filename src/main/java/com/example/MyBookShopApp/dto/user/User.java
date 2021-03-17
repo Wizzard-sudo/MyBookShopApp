@@ -66,11 +66,11 @@ public class User {
         this.hash = hash;
     }
 
-    public Date getReg_time() {
+    public Date getRegTime() {
         return regTime;
     }
 
-    public void setReg_time(Date regTime) {
+    public void setRegTime(Date regTime) {
         this.regTime = regTime;
     }
 

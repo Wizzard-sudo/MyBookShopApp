@@ -32,7 +32,7 @@ public class Book {
     @NotNull
     @Column(name = "is_bestseller")
     @ApiModelProperty("if isBestseller = 1 so the book is considered to be bestseller")
-    private short isBestseller;
+    private Integer isBestseller;
     @NotNull
     @ApiModelProperty("mnemonically identity sequence of charters")
     private String slug;
@@ -78,20 +78,20 @@ public class Book {
         this.id = id;
     }
 
-    public Date getPub_date() {
+    public Date getPubDate() {
         return pubDate;
     }
 
-    public void setPub_date(Date pub_date) {
-        this.pubDate = pub_date;
+    public void setPubDate(Date pubDate) {
+        this.pubDate = pubDate;
     }
 
-    public short getIs_bestseller() {
+    public Integer getIsBestseller() {
         return isBestseller;
     }
 
-    public void setIs_bestseller(short is_bestseller) {
-        this.isBestseller = is_bestseller;
+    public void setIsBestseller(Integer isBestseller) {
+        this.isBestseller = isBestseller;
     }
 
     public String getSlug() {

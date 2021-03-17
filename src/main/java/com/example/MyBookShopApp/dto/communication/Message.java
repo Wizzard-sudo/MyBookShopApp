@@ -51,11 +51,11 @@ public class Message {
         this.user = user;
     }
 
-    public String getE_mail() {
+    public String geteMail() {
         return eMail;
     }
 
-    public void setE_mail(String eMail) {
+    public void seteMail(String eMail) {
         this.eMail = eMail;
     }
 

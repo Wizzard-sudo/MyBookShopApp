@@ -33,11 +33,11 @@ public class Genre {
         this.id = id;
     }
 
-    public Integer getParent_id() {
+    public Integer getParentId() {
         return parentId;
     }
 
-    public void setParent_id(Integer parentId) {
+    public void setParentId(Integer parentId) {
         this.parentId = parentId;
     }
 

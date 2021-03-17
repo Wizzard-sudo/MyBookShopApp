@@ -28,11 +28,11 @@ public class Document {
         this.id = id;
     }
 
-    public Integer getSort_index() {
+    public Integer getSortIndex() {
         return sortIndex;
     }
 
-    public void setSort_index(Integer sortIndex) {
+    public void setSortIndex(Integer sortIndex) {
         this.sortIndex = sortIndex;
     }
 
