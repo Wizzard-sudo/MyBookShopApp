@@ -1,13 +1,15 @@
 package com.example.MyBookShopApp.dto.book;
 
+import com.example.MyBookShopApp.dto.book.Book;
+
 import java.util.List;
 
-public class RecommendedBooksPageDto {
+public class BooksPageDto {
 
     private Integer count;
     private List<Book> books;
 
-    public RecommendedBooksPageDto(List<Book> books) {
+    public BooksPageDto(List<Book> books) {
         this.books = books;
         this.count = books.size();
     }
