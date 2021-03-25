@@ -1,9 +1,14 @@
 package com.example.MyBookShopApp.services.relationship;
 
+import com.example.MyBookShopApp.dto.book.Book;
 import com.example.MyBookShopApp.dto.relationship.Book2Author;
 import com.example.MyBookShopApp.repository.relationship.Book2AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
 
 @Service
 public class Book2AuthorService {

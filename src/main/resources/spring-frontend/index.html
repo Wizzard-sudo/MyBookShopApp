@@ -50,17 +50,17 @@
             <h2 class="Section-title" th:text="#{main.recommended}">Рекомендуемое
             </h2>
           </div>
-              <div th:replace="~{fragments/book_fragment :: books (${recommendedBooks}, recommended)}"></div>
+              <div th:replace="~{fragments/book_fragment :: books (${recommendedBooks}, recommended, ${recommendedBooksAuthors})}"></div>
           <div class="Section-header">
             <h2 class="Section-title" th:text="#{topbar.news}">Новинки
             </h2>
           </div>
-              <div th:replace="~{fragments/book_fragment :: books (${newsBooks}, recent)}"></div>
+              <div th:replace="~{fragments/book_fragment :: books (${newsBooks}, mainRecent, ${recommendedBooksAuthors})}"></div>
           <div class="Section-header">
             <h2 class="Section-title" th:text="#{topbar.popular}">Популярное
             </h2>
           </div>
-              <div th:replace="~{fragments/book_fragment :: books (${popularBooks}, popular)}"></div>
+              <div th:replace="~{fragments/book_fragment :: books (${popularBooks}, mainPopular, ${recommendedBooksAuthors})}"></div>
         <h2 class="Middle-title" th:text="#{main.booksByTags}">Книги по тегам
         </h2>
         <div th:replace="~{fragments/book_fragment :: booksByTags}"></div>

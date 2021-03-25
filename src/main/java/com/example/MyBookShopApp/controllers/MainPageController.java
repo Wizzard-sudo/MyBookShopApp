@@ -68,13 +68,13 @@ public class MainPageController {
         return new BooksPageDto(bookService.getPageOfRecommendedBooks(offset, limit).getContent());
     }
 
-    @GetMapping("/books/recent")
+    @GetMapping("/books/mainRecent")
     @ResponseBody
     public BooksPageDto getNewsBookPage(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit){
         return new BooksPageDto(bookService.getPageOfNewsBooks(offset, limit).getContent());
     }
 
-    @GetMapping("/books/popular")
+    @GetMapping("/books/mainPopular")
     @ResponseBody
     public BooksPageDto getPopularBookPage(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit){
         return new BooksPageDto(bookService.getPageOfPopularBooks(offset, limit).getContent());
