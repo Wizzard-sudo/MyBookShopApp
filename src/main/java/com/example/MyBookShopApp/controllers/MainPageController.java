@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 //the controller responsible for the operation of the main page
 @Controller
@@ -31,12 +32,18 @@ public class MainPageController {
     }
 
     @ModelAttribute("recommendedBooks")
-    public Map<Author, Book> recommendedBooks() {
-        Map<Author, Book> books = new HashMap<>();
-        for (Book book: bookService.getPageOfRecommendedBooks(0, 6).getContent()) {
-            books.put(book2AuthorService.getBook2Author(book.getId()).getAuthor(), book);
-        }
-        return books;
+    public List<Book> recommendedBooks() {
+        return bookService.getPageOfRecommendedBooks(0, 6).getContent();
+    }
+
+    @ModelAttribute("newsBooks")
+    public List<Book> newsBooks() {
+        return bookService.getPageOfNewsBooks(0, 6).getContent();
+    }
+
+    @ModelAttribute("popularBooks")
+    public List<Book> popularBooks() {
+        return bookService.getPageOfPopularBooks(0, 6).getContent();
     }
 
     @ModelAttribute("searchWordDto")
@@ -59,6 +66,18 @@ public class MainPageController {
     @ResponseBody
     public BooksPageDto getBookPage(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit){
         return new BooksPageDto(bookService.getPageOfRecommendedBooks(offset, limit).getContent());
+    }
+
+    @GetMapping("/books/recent")
+    @ResponseBody
+    public BooksPageDto getNewsBookPage(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit){
+        return new BooksPageDto(bookService.getPageOfNewsBooks(offset, limit).getContent());
+    }
+
+    @GetMapping("/books/popular")
+    @ResponseBody
+    public BooksPageDto getPopularBookPage(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit){
+        return new BooksPageDto(bookService.getPageOfPopularBooks(offset, limit).getContent());
     }
 
     @GetMapping(value = {"/search", "/search/{searchWord}"})

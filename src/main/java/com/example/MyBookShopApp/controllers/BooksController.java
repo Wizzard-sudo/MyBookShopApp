@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BooksController {
 
     //return page with news books
-    @GetMapping("/recent")
+    @GetMapping("/recent1")
     public String recentPage() {
         return "books/recent";
     }
 
     //return page with popular books
-    @GetMapping("/popular")
+    @GetMapping("/popular1")
     public String popularPage() {
         return "books/popular";
     }
