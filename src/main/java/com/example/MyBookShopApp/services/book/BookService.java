@@ -2,6 +2,7 @@ package com.example.MyBookShopApp.services.book;
 
 import com.example.MyBookShopApp.dto.book.Book;
 import com.example.MyBookShopApp.repository.book.BookRepository;
+import com.example.MyBookShopApp.services.relationship.Book2UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -9,6 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+
+import java.sql.Date;
 import java.util.List;
 
 //the service responsible for the operation and processing of books
@@ -16,10 +19,12 @@ import java.util.List;
 public class BookService {
 
     private final BookRepository bookRepository;
+    private final Book2UserService book2UserService;
 
     @Autowired
-    public BookService(BookRepository bookRepository) {
+    public BookService(BookRepository bookRepository, Book2UserService book2UserService) {
         this.bookRepository = bookRepository;
+        this.book2UserService = book2UserService;
     }
 
     //returns all books from the database
@@ -66,7 +71,7 @@ public class BookService {
     }
 
     public Page<Book> getPageOfPopularBooks(Integer offset, Integer limit){
-        Pageable nextPage = PageRequest.of(offset, limit, Sort.by("price").descending());
+        Pageable nextPage = PageRequest.of(offset, limit, Sort.by("popular").descending());
         return bookRepository.findAll(nextPage);
     }
 

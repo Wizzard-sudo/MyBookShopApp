@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
-    <div class="Slider Slider_carousel" th:fragment="books (recommendedBooks, recommended, recommendedBooksAuthors)">
+    <div class="Slider Slider_carousel" th:fragment="books (recommendedBooks, recommended)">
         <div class="Slider-box Cards" th:data-load="${recommended}" data-loadoffset="0" data-loadlimit="6">
             <div class="Slider-item" th:each="book : ${recommendedBooks}">
                 <div class="Slider-content">
@@ -10,8 +10,6 @@
                         <div class="Card-content">
                             <strong class="Card-title"><a href="/books/slug.html" th:text="${book.title}"></a>
                             </strong>
-<!--                            <div class="Card-description" th:text="${recommendedBooksAuthors}">-->
-<!--                            </div>-->
                             <div class="Card-cost"><span class="Card-price">BYN<span th:text="${book.price}"></span></span>
                             </div>
                         </div>

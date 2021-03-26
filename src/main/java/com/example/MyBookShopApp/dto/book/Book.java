@@ -52,6 +52,9 @@ public class Book {
     @ApiModelProperty("book discount value from book")
     private short discount;
 
+    @Column(columnDefinition = "real default 0")
+    private Double popular;
+
     @OneToMany(mappedBy = "book")
     private List<Book2Author> book2Author = new ArrayList<>();
 

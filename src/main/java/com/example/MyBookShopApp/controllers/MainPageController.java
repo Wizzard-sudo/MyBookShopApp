@@ -1,6 +1,5 @@
 package com.example.MyBookShopApp.controllers;
 
-import com.example.MyBookShopApp.dto.Author;
 import com.example.MyBookShopApp.dto.SearchWordDto;
 import com.example.MyBookShopApp.dto.book.Book;
 import com.example.MyBookShopApp.dto.book.BooksPageDto;
@@ -11,10 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
 
 //the controller responsible for the operation of the main page
@@ -71,6 +71,7 @@ public class MainPageController {
     @GetMapping("/books/mainRecent")
     @ResponseBody
     public BooksPageDto getNewsBookPage(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit){
+
         return new BooksPageDto(bookService.getPageOfNewsBooks(offset, limit).getContent());
     }
 
