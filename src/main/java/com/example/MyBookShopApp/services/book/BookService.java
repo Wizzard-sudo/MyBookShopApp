@@ -70,7 +70,6 @@ public class BookService {
 
     public Page<Book> getPageOfNewsBooks(Integer offset, Integer limit){
         Pageable nextPage = PageRequest.of(offset, limit, Sort.by("pubDate").descending());
-        Logger.getAnonymousLogger().info("w/o date");
         return bookRepository.findAll(nextPage);
     }
 
@@ -78,7 +77,6 @@ public class BookService {
         Pageable nextPage = PageRequest.of(offset, limit, Sort.by("pubDate").descending());
         String newFrom = from.substring(6, 10) + "-" + from.substring(3, 5) + "-" + from.substring(0, 2);
         String newTo = to.substring(6, 10) + "-" + to.substring(3, 5) + "-" + to.substring(0, 2);
-        Logger.getAnonymousLogger().info("date");
         return bookRepository.findBooksByPubDateBetween(Date.valueOf(newFrom), Date.valueOf(newTo), nextPage);
     }
 

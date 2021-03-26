@@ -74,7 +74,6 @@ public class MainPageController {
                                         @RequestParam(value = "from", defaultValue = "2000-01-01") String from,
                                         @RequestParam(value = "to", defaultValue = "2022-01-01") String to){
         if(from.equals("2000-01-01") & to.equals("2022-01-01")){
-            Logger.getAnonymousLogger().info("auto date");
             return new BooksPageDto(bookService.getPageOfNewsBooks(offset, limit).getContent());
         }else {
             return new BooksPageDto(bookService.getPageOfNewsBooks(offset, limit, from, to).getContent());
