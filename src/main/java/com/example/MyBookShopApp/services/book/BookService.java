@@ -12,7 +12,10 @@ import org.springframework.stereotype.Service;
 
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.logging.Logger;
 
 //the service responsible for the operation and processing of books
 @Service
@@ -67,7 +70,16 @@ public class BookService {
 
     public Page<Book> getPageOfNewsBooks(Integer offset, Integer limit){
         Pageable nextPage = PageRequest.of(offset, limit, Sort.by("pubDate").descending());
+        Logger.getAnonymousLogger().info("w/o date");
         return bookRepository.findAll(nextPage);
+    }
+
+    public Page<Book> getPageOfNewsBooks(Integer offset, Integer limit, String from, String to){
+        Pageable nextPage = PageRequest.of(offset, limit, Sort.by("pubDate").descending());
+        String newFrom = from.substring(6, 10) + "-" + from.substring(3, 5) + "-" + from.substring(0, 2);
+        String newTo = to.substring(6, 10) + "-" + to.substring(3, 5) + "-" + to.substring(0, 2);
+        Logger.getAnonymousLogger().info("date");
+        return bookRepository.findBooksByPubDateBetween(Date.valueOf(newFrom), Date.valueOf(newTo), nextPage);
     }
 
     public Page<Book> getPageOfPopularBooks(Integer offset, Integer limit){

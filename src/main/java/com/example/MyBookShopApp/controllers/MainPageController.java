@@ -10,10 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -70,9 +70,15 @@ public class MainPageController {
 
     @GetMapping("/books/mainRecent")
     @ResponseBody
-    public BooksPageDto getNewsBookPage(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit){
-
-        return new BooksPageDto(bookService.getPageOfNewsBooks(offset, limit).getContent());
+    public BooksPageDto getNewsBookPage(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit,
+                                        @RequestParam(value = "from", defaultValue = "2000-01-01") String from,
+                                        @RequestParam(value = "to", defaultValue = "2022-01-01") String to){
+        if(from.equals("2000-01-01") & to.equals("2022-01-01")){
+            Logger.getAnonymousLogger().info("auto date");
+            return new BooksPageDto(bookService.getPageOfNewsBooks(offset, limit).getContent());
+        }else {
+            return new BooksPageDto(bookService.getPageOfNewsBooks(offset, limit, from, to).getContent());
+        }
     }
 
     @GetMapping("/books/mainPopular")
