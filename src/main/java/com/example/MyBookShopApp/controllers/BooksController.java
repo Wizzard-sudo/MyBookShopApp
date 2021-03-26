@@ -28,12 +28,10 @@ public class BooksController {
         return bookService.getPageOfNewsBooks(0, 20).getContent();
     }
 
-//    @GetMapping("/books/mainRecent")
-//    @ResponseBody
-//    public BooksPageDto getNewsBookPage(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit,
-//                                        @RequestParam("from") Date from, @RequestParam("to") Date to){
-//        return new BooksPageDto(bookService.getPageOfNewsBooks(offset, limit).getContent());
-//    }
+    @ModelAttribute("popularBooks")
+    public List<Book> popularBooks() {
+        return bookService.getPageOfPopularBooks(0, 20).getContent();
+    }
 
     //return page with news books
     @GetMapping("/recent")
