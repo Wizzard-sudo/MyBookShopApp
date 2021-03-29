@@ -19,6 +19,8 @@ public class Genre {
     private String slug;
     @NotNull
     private String name;
+    @NotNull
+    private Integer count;
 
     @OneToMany(mappedBy = "genre")
     private List<Book2Genre> book2Genres = new ArrayList<>();
@@ -57,13 +59,13 @@ public class Genre {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Genre{" +
-                "id=" + id +
-                ", parent_id=" + parentId +
-                ", slug='" + slug + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+    public Integer getCount() {
+        return count;
     }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
+
+
 }
