@@ -1,20 +1,27 @@
 package com.example.MyBookShopApp.services;
 
 import com.example.MyBookShopApp.dto.Genre;
+import com.example.MyBookShopApp.dto.book.Book;
+import com.example.MyBookShopApp.dto.relationship.Book2Genre;
 import com.example.MyBookShopApp.repository.GenreRepository;
+import com.example.MyBookShopApp.services.book.BookService;
+import com.example.MyBookShopApp.services.relationship.Book2GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.logging.Logger;
 
 @Service
 public class GenreService {
 
     private final GenreRepository genreRepository;
+    private final Book2GenreService book2GenreService;
 
     @Autowired
-    public GenreService(GenreRepository genreRepository) {
+    public GenreService(GenreRepository genreRepository, Book2GenreService book2GenreService) {
         this.genreRepository = genreRepository;
+        this.book2GenreService = book2GenreService;
     }
 
     public Genre getGenreById(Integer id){
@@ -38,5 +45,18 @@ public class GenreService {
 
     public Genre getGenreBySlug(String slug){
         return genreRepository.findGenreBySlug(slug);
+    }
+
+    public List<Book> getBooksByGenre(Genre genre){
+        List<Book> books = new ArrayList<>();
+        if(genre.getParentId() != null) {
+            for (Book2Genre book2Genre : book2GenreService.getBook2GenreByGenre(genre))
+                books.add(book2Genre.getBook());
+        }else {
+            for (Genre gen: genreRepository.findGenreByParentId(genre.getId()))
+                for (Book2Genre book2Genre : book2GenreService.getBook2GenreByGenre(gen))
+                    books.add(book2Genre.getBook());
+        }
+        return books;
     }
 }

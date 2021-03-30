@@ -1,6 +1,7 @@
 package com.example.MyBookShopApp.controllers;
 
 import com.example.MyBookShopApp.dto.Genre;
+import com.example.MyBookShopApp.dto.book.Book;
 import com.example.MyBookShopApp.services.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,6 +46,7 @@ public class GenresController {
         if(genre.getParentId() != null)
             model.addAttribute("genreParent", genreService.getGenreById(genre.getParentId()));
         model.addAttribute("genre", genre);
+        model.addAttribute("genreBooks", genreService.getBooksByGenre(genre));
         return "genres/slug";
     }
 }
