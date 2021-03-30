@@ -35,4 +35,8 @@ public class GenreService {
         }
         return genreMap;
     }
+
+    public Genre getGenreBySlug(String slug){
+        return genreRepository.findGenreBySlug(slug);
+    }
 }

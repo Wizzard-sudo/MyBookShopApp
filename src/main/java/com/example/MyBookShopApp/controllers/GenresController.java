@@ -4,12 +4,15 @@ import com.example.MyBookShopApp.dto.Genre;
 import com.example.MyBookShopApp.services.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 
 //the controller responsible for working with book genres
@@ -36,8 +39,12 @@ public class GenresController {
     }
 
     //return detail genres page
-    @GetMapping("/slug")
-    public String delailGenres() {
+    @GetMapping("/{slug}")
+    public String delailGenres(@PathVariable(value = "slug", required = false) String slug, Model model) {
+        Genre genre = genreService.getGenreBySlug(slug);
+        if(genre.getParentId() != null)
+            model.addAttribute("genreParent", genreService.getGenreById(genre.getParentId()));
+        model.addAttribute("genre", genre);
         return "genres/slug";
     }
 }
