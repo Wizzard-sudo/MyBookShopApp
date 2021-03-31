@@ -28,4 +28,8 @@ public class AuthorService {
     public Author getAuthorById(Integer id){
         return authorRepository.findById(id).get();
     }
+
+    public Author getAuthorBySlug(String slug){
+        return authorRepository.findAuthorBySlug(slug);
+    }
 }

@@ -53,8 +53,6 @@ public class GenreService {
     public List<Book> getBooksByGenre(Genre genre, Integer offset, Integer limit){
         List<Book> books = new ArrayList<>();
         Pageable nextPage = PageRequest.of(offset, limit);
-        Logger.getAnonymousLogger().info(nextPage.toString());
-        Logger.getAnonymousLogger().info(String.valueOf(book2GenreService.getBook2GenreByGenre(genre, nextPage).getContent().size()));
         if(genre.getParentId() != null) {
             for (Book2Genre book2Genre : book2GenreService.getBook2GenreByGenre(genre, nextPage).getContent())
                 books.add(book2Genre.getBook());

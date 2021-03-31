@@ -1,7 +1,10 @@
 package com.example.MyBookShopApp.services.book;
 
+import com.example.MyBookShopApp.dto.Author;
 import com.example.MyBookShopApp.dto.book.Book;
+import com.example.MyBookShopApp.dto.relationship.Book2Author;
 import com.example.MyBookShopApp.repository.book.BookRepository;
+import com.example.MyBookShopApp.services.relationship.Book2AuthorService;
 import com.example.MyBookShopApp.services.relationship.Book2UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -22,12 +26,12 @@ import java.util.logging.Logger;
 public class BookService {
 
     private final BookRepository bookRepository;
-    private final Book2UserService book2UserService;
+    private final Book2AuthorService book2AuthorService;
 
     @Autowired
-    public BookService(BookRepository bookRepository, Book2UserService book2UserService) {
+    public BookService(BookRepository bookRepository, Book2AuthorService book2AuthorService) {
         this.bookRepository = bookRepository;
-        this.book2UserService = book2UserService;
+        this.book2AuthorService = book2AuthorService;
     }
 
     //returns all books from the database
@@ -88,5 +92,15 @@ public class BookService {
     public Page<Book> getPageOfSearchResultBooks(String searchWord, Integer offset, Integer limit){
         Pageable nextPage = PageRequest.of(offset, limit);
         return bookRepository.findBookByTitleContaining(searchWord, nextPage);
+    }
+
+    public List<Book> getPageBooksByAuthor(Author author, Integer offset, Integer limit){
+        Pageable nextPage = PageRequest.of(offset, limit);
+        Page<Book2Author> book2Authors = book2AuthorService.getBook2AuthorsByAuthor(author, nextPage);
+        List<Book> books = new ArrayList<>();
+        for (Book2Author book2Author: book2Authors) {
+            books.add(book2Author.getBook());
+        }
+        return books;
     }
 }
