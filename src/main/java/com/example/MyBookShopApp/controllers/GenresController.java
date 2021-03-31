@@ -1,15 +1,14 @@
 package com.example.MyBookShopApp.controllers;
 
 import com.example.MyBookShopApp.dto.Genre;
+import com.example.MyBookShopApp.dto.GenresPageDto;
 import com.example.MyBookShopApp.dto.book.Book;
+import com.example.MyBookShopApp.dto.book.BooksPageDto;
 import com.example.MyBookShopApp.services.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -46,7 +45,15 @@ public class GenresController {
         if(genre.getParentId() != null)
             model.addAttribute("genreParent", genreService.getGenreById(genre.getParentId()));
         model.addAttribute("genre", genre);
-        model.addAttribute("genreBooks", genreService.getBooksByGenre(genre));
+        model.addAttribute("genreBooks", genreService.getBooksByGenre(genre, 0, 5));
         return "genres/slug";
+    }
+
+    @GetMapping("/{slug}/1020")
+    @ResponseBody
+    public GenresPageDto getBookPage(@PathVariable(value = "slug", required = false) String slug,
+            @RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit){
+        Genre genre = genreService.getGenreBySlug(slug);
+        return new GenresPageDto(genreService.getBooksByGenre(genre, offset, limit));
     }
 }

@@ -4,6 +4,8 @@ import com.example.MyBookShopApp.dto.Genre;
 import com.example.MyBookShopApp.dto.relationship.Book2Genre;
 import com.example.MyBookShopApp.repository.relationship.Book2GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,7 +24,7 @@ public class Book2GenreService {
         return book2GenreRepository.findById(id).get();
     }
 
-    public List<Book2Genre> getBook2GenreByGenre(Genre genre){
-        return book2GenreRepository.findBook2GenresByGenre(genre);
+    public Page<Book2Genre> getBook2GenreByGenre(Genre genre, Pageable pageable){
+        return book2GenreRepository.findBook2GenresByGenre(genre, pageable);
     }
 }

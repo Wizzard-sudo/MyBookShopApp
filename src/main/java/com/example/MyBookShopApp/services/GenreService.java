@@ -7,6 +7,9 @@ import com.example.MyBookShopApp.repository.GenreRepository;
 import com.example.MyBookShopApp.services.book.BookService;
 import com.example.MyBookShopApp.services.relationship.Book2GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -47,14 +50,17 @@ public class GenreService {
         return genreRepository.findGenreBySlug(slug);
     }
 
-    public List<Book> getBooksByGenre(Genre genre){
+    public List<Book> getBooksByGenre(Genre genre, Integer offset, Integer limit){
         List<Book> books = new ArrayList<>();
+        Pageable nextPage = PageRequest.of(offset, limit);
+        Logger.getAnonymousLogger().info(nextPage.toString());
+        Logger.getAnonymousLogger().info(String.valueOf(book2GenreService.getBook2GenreByGenre(genre, nextPage).getContent().size()));
         if(genre.getParentId() != null) {
-            for (Book2Genre book2Genre : book2GenreService.getBook2GenreByGenre(genre))
+            for (Book2Genre book2Genre : book2GenreService.getBook2GenreByGenre(genre, nextPage).getContent())
                 books.add(book2Genre.getBook());
         }else {
             for (Genre gen: genreRepository.findGenreByParentId(genre.getId()))
-                for (Book2Genre book2Genre : book2GenreService.getBook2GenreByGenre(gen))
+                for (Book2Genre book2Genre : book2GenreService.getBook2GenreByGenre(gen, nextPage).getContent())
                     books.add(book2Genre.getBook());
         }
         return books;

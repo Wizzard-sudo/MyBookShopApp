@@ -17,7 +17,7 @@
   <!--meta( http-equiv="cache-control" content="no-cache")-->
   <!--meta( http-equiv="expires" content="0")-->
   <!--link(rel="preload" href="assets/css/extra.min.css?v=" + version as="style" crossorigin="anonymous")-->
-  <link href="favicon.ico" rel="shortcut icon">
+  <link href="../favicon.ico" rel="shortcut icon">
   <link rel="preload" href="/assets/fonts/Montserrat/Montserrat-SemiBold.woff2" as="font" crossorigin="anonymous">
   <link rel="preload" href="/assets/fonts/Montserrat/Montserrat-Light.woff2" as="font" crossorigin="anonymous">
   <link rel="preload" href="/assets/fonts/Montserrat/Montserrat-Medium.woff2" as="font" crossorigin="anonymous">
@@ -70,7 +70,7 @@
                 </div>
               </div>
             </div>
-            <div class="Cards-footer Cards-footer_center"><a class="btn btn_primary" href="#" data-refreshshow="genre" data-refreshoffset="10" data-refreshlimit="20" data-refreshid="1020" th:text="#{books.showMore}">Показать еще</a>
+            <div class="Cards-footer Cards-footer_center"><a class="btn btn_primary" th:href="${genreParent.slug}" th:data-refreshshow="genre" data-refreshoffset="0" data-refreshlimit="5" data-refreshid="1020" th:text="#{books.showMore}">Показать еще</a>
             </div>
           </div>
         </div>
