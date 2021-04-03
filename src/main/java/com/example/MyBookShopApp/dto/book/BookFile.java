@@ -18,6 +18,14 @@ public class BookFile {
     @NotNull
     private String path;
 
+    @ManyToOne
+    @JoinColumn(name = "book_id", referencedColumnName = "id")
+    private Book book;
+
+    public String getBookFileExtensionString(){
+        return BookFileTypeEnum.getExtensionStringByTypeId(bookFileType.getId());
+    }
+
     public Integer getId() {
         return id;
     }
@@ -48,6 +56,14 @@ public class BookFile {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
     }
 
     @Override

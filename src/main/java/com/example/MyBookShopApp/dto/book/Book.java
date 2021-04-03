@@ -75,6 +75,25 @@ public class Book {
     @OneToMany(mappedBy = "book")
     private List<FileDownload> fileDownloads = new ArrayList<>();
 
+    @OneToMany(mappedBy = "book")
+    private List<BookFile> bookFileList = new ArrayList<>();
+
+    public Double getPopular() {
+        return popular;
+    }
+
+    public void setPopular(Double popular) {
+        this.popular = popular;
+    }
+
+    public List<BookFile> getBookFileList() {
+        return bookFileList;
+    }
+
+    public void setBookFileList(List<BookFile> bookFileList) {
+        this.bookFileList = bookFileList;
+    }
+
     @JsonProperty
     public Integer discountPrice(){
         return price - Math.toIntExact(price * discount / 100);

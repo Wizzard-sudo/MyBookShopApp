@@ -18,4 +18,6 @@ public class BookFileService {
     public BookFile getBookFileById(Integer id){
         return bookFileRepository.findById(id).get();
     }
+
+    public BookFile getBookFileByHash(String hash){ return bookFileRepository.findBookFileByHash(hash);}
 }

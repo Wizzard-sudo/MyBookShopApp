@@ -995,9 +995,9 @@ insert into book_file_type (id, name, description) values (3, 'FB2', 'FB2 file')
 
 
 
-insert into book_file (id, hash, type_id, path) values (1, '0dd597ffd62a52de42ea3a5e713df7f4fa239716', 3, '/quisque/arcu/libero.jsp');
-insert into book_file (id, hash, type_id, path) values (2, '201a5ba60425a36ad40bb155423b11a830121d42', 1, '/cursus/vestibulum/proin.jpg');
-insert into book_file (id, hash, type_id, path) values (3, 'e89b57da1df77ab9e5edd84d4ac3c1595292afe0', 1, '/in/congue.json');
+insert into book_file (id, hash, type_id, path, book_id) values (1, '0dd597ffd62a52de42ea3a5e713df7f4fa239716', 1, '/Biode.pdf', 2);
+insert into book_file (id, hash, type_id, path, book_id) values (2, '201a5ba60425a36ad40bb155423b11a830121d42', 2, '/Biode.epub', 2);
+insert into book_file (id, hash, type_id, path, book_id) values (3, 'e89b57da1df77ab9e5edd84d4ac3c1595292afe0', 3, '/Biode.fb2', 2);
 insert into book_file (id, hash, type_id, path) values (4, '7adcf99e1d3ba5f12cc60ea75c68d235e43f840c', 3, '/nulla/ac/enim.jpg');
 insert into book_file (id, hash, type_id, path) values (5, 'a285a9e2dcfc5c2e53c82e8c354a095dae806096', 2, '/cubilia/curae/mauris.jpg');
 insert into book_file (id, hash, type_id, path) values (6, '7be8aae2ee6868af93c7ddc3c8be9e2c5012cd7b', 2, '/quis/lectus/suspendisse/potenti/in/eleifend/quam.jsp');
