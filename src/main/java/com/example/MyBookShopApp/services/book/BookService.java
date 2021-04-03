@@ -5,7 +5,6 @@ import com.example.MyBookShopApp.dto.book.Book;
 import com.example.MyBookShopApp.dto.relationship.Book2Author;
 import com.example.MyBookShopApp.repository.book.BookRepository;
 import com.example.MyBookShopApp.services.relationship.Book2AuthorService;
-import com.example.MyBookShopApp.services.relationship.Book2UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,11 +14,8 @@ import org.springframework.stereotype.Service;
 
 
 import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 //the service responsible for the operation and processing of books
 @Service
@@ -67,6 +63,10 @@ public class BookService {
         return bookRepository.getBestsellers();
     }
 
+    public Book getBookBySlug(String slug){return bookRepository.findBookBySlug(slug);}
+
+    public Book saveBook(Book book){ return bookRepository.save(book);}
+
     public Page<Book> getPageOfRecommendedBooks(Integer offset, Integer limit){
         Pageable nextPage = PageRequest.of(offset, limit);
         return bookRepository.findAll(nextPage);
@@ -101,6 +101,9 @@ public class BookService {
         for (Book2Author book2Author: book2Authors) {
             books.add(book2Author.getBook());
         }
+        if(books.size() < 5)
+            for(int i = 0; i < 5 - books.size(); i++)
+                books.add(books.get(0));
         return books;
     }
 }

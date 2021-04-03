@@ -37,5 +37,5 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
     Page<Book> findBooksByPubDateBetween(@NotNull Date pubDate, @NotNull Date pubDate2, Pageable pageable);
 
-
+    Book findBookBySlug(@NotNull String slug);
 }

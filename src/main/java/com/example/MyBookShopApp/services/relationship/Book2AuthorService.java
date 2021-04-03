@@ -28,4 +28,8 @@ public class Book2AuthorService {
     public Page<Book2Author> getBook2AuthorsByAuthor(Author author, Pageable pageable){
         return book2AuthorRepository.findBook2AuthorsByAuthor(author, pageable);
     }
+
+    public Book2Author getBook2AuthorByBook(Book book){
+        return book2AuthorRepository.findBook2AuthorByBook(book);
+    }
 }

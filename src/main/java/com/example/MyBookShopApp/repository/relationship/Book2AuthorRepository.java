@@ -1,6 +1,7 @@
 package com.example.MyBookShopApp.repository.relationship;
 
 import com.example.MyBookShopApp.dto.Author;
+import com.example.MyBookShopApp.dto.book.Book;
 import com.example.MyBookShopApp.dto.relationship.Book2Author;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,4 +14,6 @@ import javax.validation.constraints.NotNull;
 public interface Book2AuthorRepository extends JpaRepository<Book2Author, Integer> {
 
     public Page<Book2Author> findBook2AuthorsByAuthor(@NotNull Author author, Pageable pageable);
+
+    public Book2Author findBook2AuthorByBook(@NotNull Book book);
 }
