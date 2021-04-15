@@ -59,7 +59,6 @@ public class BooksController {
     @GetMapping("/{slug}")
     public String bookPage(@PathVariable("slug") String slug, Model model){
         Book book = bookService.getBookBySlug(slug);
-        Logger.getAnonymousLogger().info(book.toString());
         model.addAttribute("slugBook", book);
         return "/books/slug";
     }

@@ -3,6 +3,7 @@ package com.example.MyBookShopApp.controllers;
 import com.example.MyBookShopApp.dto.SearchWordDto;
 import com.example.MyBookShopApp.dto.book.Book;
 import com.example.MyBookShopApp.dto.book.BooksPageDto;
+import com.example.MyBookShopApp.errors.EmptySearchException;
 import com.example.MyBookShopApp.services.book.BookService;
 import com.example.MyBookShopApp.services.relationship.Book2AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 //the controller responsible for the operation of the main page
 @Controller
@@ -47,15 +44,14 @@ public class MainPageController {
     }
 
     @ModelAttribute("searchWordDto")
-    public SearchWordDto searchWordDto(){
+    public SearchWordDto searchWordDto() {
         return new SearchWordDto();
     }
 
     @ModelAttribute("searchResults")
-    public List<Book> searchResults(){
+    public List<Book> searchResults() {
         return new ArrayList<>();
     }
-
 
 
     //return main page
@@ -66,7 +62,7 @@ public class MainPageController {
 
     @GetMapping("/books/recommended")
     @ResponseBody
-    public BooksPageDto getBookPage(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit){
+    public BooksPageDto getBookPage(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit) {
         return new BooksPageDto(bookService.getPageOfRecommendedBooks(offset, limit).getContent());
     }
 
@@ -74,27 +70,31 @@ public class MainPageController {
     @ResponseBody
     public BooksPageDto getNewsBookPage(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit,
                                         @RequestParam(value = "from", defaultValue = "2000-01-01") String from,
-                                        @RequestParam(value = "to", defaultValue = "2022-01-01") String to){
-        if(from.equals("2000-01-01") & to.equals("2022-01-01")){
+                                        @RequestParam(value = "to", defaultValue = "2022-01-01") String to) {
+        if (from.equals("2000-01-01") & to.equals("2022-01-01")) {
             return new BooksPageDto(bookService.getPageOfNewsBooks(offset, limit).getContent());
-        }else {
+        } else {
             return new BooksPageDto(bookService.getPageOfNewsBooks(offset, limit, from, to).getContent());
         }
     }
 
     @GetMapping("/books/mainPopular")
     @ResponseBody
-    public BooksPageDto getPopularBookPage(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit){
+    public BooksPageDto getPopularBookPage(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit) {
         return new BooksPageDto(bookService.getPageOfPopularBooks(offset, limit).getContent());
     }
 
     @GetMapping(value = {"/search", "/search/{searchWord}"})
     public String getSearchResults(@PathVariable(value = "searchWord", required = false) SearchWordDto searchWordDto,
-                                   Model model) {
-        model.addAttribute("searchWordDto", searchWordDto);
-        model.addAttribute("searchResults",
-                bookService.getPageOfSearchResultBooks(searchWordDto.getExample(), 0, 5).getContent());
-        return "/search/index";
+                                   Model model) throws EmptySearchException {
+        if (searchWordDto != null) {
+            model.addAttribute("searchWordDto", searchWordDto);
+            model.addAttribute("searchResults",
+                    bookService.getPageOfSearchResultBooks(searchWordDto.getExample(), 0, 5).getContent());
+            return "/search/index";
+        }else{
+            throw new EmptySearchException("Поиск по null невозможен");
+        }
     }
 
     @GetMapping("/search/page/{searchWord}")

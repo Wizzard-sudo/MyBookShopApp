@@ -6,6 +6,7 @@ import com.example.MyBookShopApp.dto.relationship.Book2Author;
 import com.example.MyBookShopApp.dto.relationship.Book2Genre;
 import com.example.MyBookShopApp.dto.relationship.Book2User;
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -69,12 +70,15 @@ public class Book {
     @OneToMany(mappedBy = "book")
     private List<Book2User> book2Users = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "book")
     private List<BalanceTransaction> balanceTransactions = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "book")
     private List<FileDownload> fileDownloads = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "book")
     private List<BookFile> bookFileList = new ArrayList<>();
 
